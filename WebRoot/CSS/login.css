@@ -1,0 +1,40 @@
+/* CSS Document */
+body{
+	text-align:center;
+	background-color:rgba(88, 61, 79, 0.2);
+}
+label{
+	text-align:left;
+}
+#container{
+	width:1000px;
+	text-align:center;
+}
+#logo{
+	margin-left:390px;
+	background-image:url(../image/yxlogin1.jpg);
+	background-repeat:no-repeat;
+	width:500px;
+	height:320px;
+	text-align:center;
+	margin-top:100px;
+	padding-top:100px;
+	font-size:16px;
+	font-family:"宋体";
+	font-style:normal;
+}
+a:link,a:visited{
+	color:#006291;
+	text-decoration:none;
+}
+a:hover{
+	color:#008000;
+}
+.bg{
+	background-image: url("../image/gdbg.jpg");
+	background-size:100%
+}
+table{
+	border-collapse:separate; 
+	border-spacing:2px;
+}

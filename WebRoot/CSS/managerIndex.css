@@ -1,0 +1,53 @@
+/* CSS Document */
+body{
+		background-color:#ACD6FF;
+		text-align:center;
+		margin-top:0px;
+}
+#container{
+	position:relative;
+	text-align:center;
+	width:100%;
+	margin-top:-188px;
+	padding-top: 0px;
+	height: auto;
+}
+#logo {
+	background-color:#000000;
+	background-image:url(../image/mylogo.jpg);
+	background-repeat:no-repeat;
+	width:100%;
+	height:185px;
+	top: 0px;
+	text-align:center;
+	color:blue;
+	left: 0px;
+	}
+#main {
+	width:980px;
+	height:570px;
+	font-size:10px;
+	text-align:center;
+	}
+#rightFrame{
+	position:absolute;
+	width:100%;
+	height:570px;
+	background-color:#9BCDFF;
+	left: 0px;
+	top: 185px;
+	}
+#logo ul{
+	list-style:none;
+	margin-top:192px;
+	margin-bottom:5px;
+	margin-left:100px;
+	width:800px;
+	font-size:16px;
+	color:#FFFFFF;
+	}
+#logo ul li{
+	float:left;
+	width:120px;
+	padding-left:20px;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<welcome-file-list>
+		<welcome-file>login.html</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<description></description>
+		<display-name>CaptchaServlet</display-name>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<servlet-class>com.servlet.CaptchaServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>SubjectServlet</display-name>
+		<servlet-name>SubjectServlet</servlet-name>
+		<servlet-class>com.servlet.SubjectServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<url-pattern>/code.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SubjectServlet</servlet-name>
+		<url-pattern>/SubjectServlet</url-pattern>
+	</servlet-mapping>
+</web-app>
