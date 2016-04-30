@@ -105,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (result.hasOwnProperty("code")) {
 					if (result.code== "0") {
 						f_choiceNum = true;
+						$("#totalPoint").val(parseInt($("#choiceNum").val())+parseInt($("#multipleChoiceNum").val())*2+parseInt($("#optionNum").val()));
 					} else if (result.code == "1") {
 						$("#choiceNum").css("border","1px solid red");
 						f_choiceNum = false;
@@ -130,6 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (result.hasOwnProperty("code")) {
 					if (result.code== "0") {
 						f_multipleChoiceNum = true;
+						$("#totalPoint").val(parseInt($("#choiceNum").val())+parseInt($("#multipleChoiceNum").val())*2+parseInt($("#optionNum").val()));
 					} else if (result.code == "1") {
 						$("#multipleChoiceNum").css("border","1px solid red");
 						f_multipleChoiceNum = false;
@@ -154,6 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (result.hasOwnProperty("code")) {
 					if (result.code== "0") {
 						f_optionNum = true;
+						$("#totalPoint").val(parseInt($("#choiceNum").val())+parseInt($("#multipleChoiceNum").val())*2+parseInt($("#optionNum").val()));
 					} else if (result.code == "1") {
 						$("#optionNum").css("border","1px solid red");
 						f_optionNum = false;
@@ -238,6 +241,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							'id':<%=id%>,
 							'subjectId':$('#subjectName option:selected').attr("id"),
 							'subjectName':$("#subjectName").val(),
+							'paperName':$("#paperName").val(),
 							'choiceNum':$("#choiceNum").val(),
 							'multipleChoiceNum':$("#multipleChoiceNum").val(),
 							'optionNum':$("#optionNum").val(),
@@ -309,7 +313,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   	</tr>
 	   	<tr>
 	   		<td >总分数</td>
-	   		<td><input type="text" id="totalPoint" name="totalPoint" class="myinput" onblur="checkTotalPoint()" value="<%=totalPoint%>"></input></td>
+	   		<td><input type="text" id="totalPoint" name="totalPoint" class="myinput" readonly="readonly" value="<%=totalPoint%>"></input></td>
 	   	</tr>
 	   	<tr>
 	   		<td >答题时间</td>

@@ -13,7 +13,7 @@
 <base href="<%=basePath%>">
 
 <title>学生智能测评系统</title>
-
+<link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -32,16 +32,16 @@
 			<table border="1" cellspacing="0" cellpadding="0"
 				bordercolor="#005FBD" style="text-align:center;margin-top: 20px" width="100%">
 				<tr>
-					<td style="background-color: rgb(85, 170, 255);width=300;">试卷</td>
-					<td style="background-color: rgb(85, 170, 255);width=400;">问题</td>
-					<td style="background-color: rgb(85, 170, 255);width=420;">正答</td>
-					<td style="background-color: rgb(85, 170, 255);width=420;">错答</td>
-					<td style="background-color: rgb(85, 170, 255);width=420;">错答时间</td>
+					<td style="background-color: rgb(85, 170, 255);width=200;">试卷</td>
+					<td style="background-color: rgb(85, 170, 255);width=200;">问题</td>
+					<td style="background-color: rgb(85, 170, 255);width=320;">正答</td>
+					<td style="background-color: rgb(85, 170, 255);width=220;">错答</td>
+					<td style="background-color: rgb(85, 170, 255);width=220;">错答时间</td>
 				</tr>
 				<%
-					int userID = Integer.parseInt(session.getAttribute("studentID")
-							.toString());
+					int userID = Integer.parseInt(session.getAttribute("studentID").toString());
 					String answer;
+					String answerContext;
 					String title;
 					String err;
 					String time;
@@ -52,7 +52,7 @@
 					rs = stmt.executeQuery(sql);
 					while (rs.next()) {
 						sName = rs.getString("paperName");
-						answer = rs.getString("answer");
+						answerContext = rs.getString("answerContext");
 						title = rs.getString("title");
 						err = rs.getString("errorselection");
 						time = rs.getString("time");
@@ -60,7 +60,7 @@
 				<tr>
 					<td><%=sName%></td>
 					<td><%=title%></td>
-					<td><%=answer%></td>
+					<td><%=answerContext%></td>
 					<td><%=err%></td>
 					<td><%=time%></td>
 				</tr>

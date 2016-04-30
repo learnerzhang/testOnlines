@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>学生智能测评系统</title>
-    
+    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -27,7 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<table style="width: 100%;margin-top: 20px">
    			<tr>
     			<td><label>请选择试题</label></td>
-    			<td><select name="paperSelect">
+    			<td>
+    				<select name="paperSelect">
   <%
   	int subjectId=Integer.parseInt(request.getParameter("subjectSelect"));
   	sql="select id,paperName,subjectId from exampaper where subjectId='"+subjectId+"'";	
@@ -37,11 +38,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		paperName=rs.getString("paperName");
   	
     %>
-    	<option value=<%=id %>><%=paperName %></option>			
+    				<option value=<%=id %>><%=paperName %></option>	
     <%
     }
      %>
-     </select>
+     				</select>
     			</td>
     			<td><input type="submit" class="btn btn-success" name="ok" value="确定"></td>
     		</tr>

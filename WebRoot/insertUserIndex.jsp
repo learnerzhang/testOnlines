@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>学生智能测评系统</title>
-    
+    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -38,8 +38,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		
 		<tr>
-			<td style="background-color: rgb(85, 170, 255);text-align:center;">是否是管理员(yes/no)</td>
-			<td><input type="text" name="isManager" id="isManager"   value=""></td>
+			<td style="background-color: rgb(85, 170, 255);text-align:center;">是否是管理员</td>
+			<td><!-- <input type="text" name="isManager" id="isManager"   value=""> -->
+				<select name="isManager" id="isManager" style="width: 199px;">
+					<option value="yes">是</option>
+					<option value="no">否</option>
+				</select>
+			</td>
 		</tr>
      </table><br>
      <div>

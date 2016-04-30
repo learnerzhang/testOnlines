@@ -43,7 +43,7 @@
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/testonline?useUnicode=true&amp;characterEncoding=UTF-8", "root",
+				"jdbc:mysql://localhost:3306/testonline?useUnicode=true&amp;characterEncoding=UTF-8&allowMultiQueries=true", "root",
 				"123456");
 		stmt = conn.createStatement();
 	} catch (Exception e) {

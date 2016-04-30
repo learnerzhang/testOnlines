@@ -29,39 +29,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div>
   	<table class="table table-bordered">
   		<tr>
-  			<td style="background-color: rgb(85, 170, 255);width:300;">用户名</td>
+  			<!-- <td style="background-color: rgb(85, 170, 255);width:300;">用户名</td> -->
   			<td style="background-color: rgb(85, 170, 255);width:400;">班级</td>
+  			<td style="background-color: rgb(85, 170, 255);width:400;">试卷名</td>
   			<td style="background-color: rgb(85, 170, 255);width:420;">分数</td>
   			<td style="background-color: rgb(85, 170, 255);width:420;">班级排名</td>
-  			<td style="background-color: rgb(85, 170, 255);width:420;">总排名</td>
+  			<td style="background-color: rgb(85, 170, 255);width:420;">成绩排名</td>
   		</tr>
   		<%
   			int userID  = Integer.parseInt(session.getAttribute("studentID").toString()); 
-  			String userName;
-  			String classes;
-  			String grad;
-  			int score =1;
-  			int paiming =2;
-  			int zongpaiming =2;
-  			sql="select * from loginuser where id = "+userID;
+  			String userName="";
+  			String classes="";
+  			String paperName="";
+  			String grad="";
+  			String score ="";
+  			String rank="";
+  			String crank ="";
+  			
+  			//select * from t1 ,t3 where t1.userid = t3.userid
+  					
+  			sql="select * from loginuser,scores where loginuser.id = scores.userid and loginuser.id="+userID;
   			
   			rs=stmt.executeQuery(sql);
+  			
   			while(rs.next()){
-  				score = new Random().nextInt(100);
-  				paiming = new Random().nextInt(10);
-  				zongpaiming = paiming+14;
   				userName=rs.getString("userName");
   				classes=rs.getString("classes");
+  				score = rs.getString("score");
+  				paperName = rs.getString("paperName");
+  				crank = rs.getString("crank");
+  				rank = rs.getString("rank");
+  				
   		%>
   			<tr>
-  				<td><%=userName %></td>
+  				<%-- <td><%=userName %></td> --%>
   				<td><%=classes %></td>
+  				<td><%=paperName %></td>
   				<td><%=score %>分</td>
-  				<td><%=paiming %></td>
-  				<td><%=zongpaiming %></td>
+  				<td><%=crank %></td>
+  				<td><%=rank %></td>
   			</tr>
   		<%	
   			}
+  			
+  			rs.close();
   		 %>
   	</table>
   	</div>

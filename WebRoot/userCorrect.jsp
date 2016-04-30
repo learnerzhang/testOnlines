@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>学生智能测评系统</title>
-    
+    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -20,8 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
-
   </head>
   
   <body style="text-align:center;">
@@ -39,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      %>
      <tr>
      	<td style="background-color: rgb(85, 170, 255);">用户id</td>
-     	<td><input type="text" name="id" value=<%=id %>></td>
+     	<td><input type="text" readonly="readonly" name="id" value=<%=id %>></td>
      </tr>
      <tr>
      	<td style="background-color: rgb(85, 170, 255);">用户名</td>
@@ -51,7 +49,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </tr>
      <tr>
      	<td style="background-color: rgb(85, 170, 255);">是否是管理员(yes/no)</td>
-     	<td><input type="text" name="isManager" value=<%=isManager %>></td>
+     	<td><%-- <input type="text" name="isManager" value=<%=isManager %>> --%>
+     		<select name="isManager" id="isManager" style="width: 199px;">
+     		<%
+     			if("yes".equals(isManager)){
+     				%>
+     			<option value="yes" selected="selected">是</option>
+				<option value="no">否</option>
+     				<%
+     			}else{
+     				%>
+       			<option value="yes">是</option>
+  				<option value="no" selected="selected">否</option>
+       				<%
+     			}
+     		%>
+			</select>
+     	</td>
      </tr>
      </table><br>
      <div align=center>

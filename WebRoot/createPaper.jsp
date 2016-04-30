@@ -79,6 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (result.hasOwnProperty("code")) {
 					if (result.code== "0") {
 						f_choiceNum = true;
+						$("#totalPoint").val(parseInt($("#choiceNum").val())+parseInt($("#multipleChoiceNum").val())*2+parseInt($("#optionNum").val()));
 					} else if (result.code == "1") {
 						$("#choiceNum").css("border","1px solid red");
 						f_choiceNum = false;
@@ -103,6 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (result.hasOwnProperty("code")) {
 					if (result.code== "0") {
 						f_multipleChoiceNum = true;
+						$("#totalPoint").val(parseInt($("#choiceNum").val())+parseInt($("#multipleChoiceNum").val())*2+parseInt($("#optionNum").val()));
 					} else if (result.code == "1") {
 						$("#multipleChoiceNum").css("border","1px solid red");
 						f_multipleChoiceNum = false;
@@ -126,6 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (result.hasOwnProperty("code")) {
 					if (result.code== "0") {
 						f_optionNum = true;
+						$("#totalPoint").val(parseInt($("#choiceNum").val())+parseInt($("#multipleChoiceNum").val())*2+parseInt($("#optionNum").val()));
 					} else if (result.code == "1") {
 						$("#optionNum").css("border","1px solid red");
 						f_optionNum = false;
@@ -133,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			});
 		}
-		function checkTotalPoint() {
+		/* function checkTotalPoint() {
 			//alert("checkOptionNum");
 			$("#totalPoint").css("border","1px solid #ccc");
 			var totalPoint = $("#totalPoint").val();
@@ -144,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}else{
 				f_totalPoint = true;
 			}
-		}
+		} */
 		function checkTime() {
 			//alert("checkOptionNum");
 			$("#time").css("border","1px solid #ccc");
@@ -170,11 +173,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			$("#submit").click(function() {
 				
-				if (f_paperName&&f_choiceNum&&f_multipleChoiceNum&&f_optionNum&&f_totalPoint&&f_time) {
+				if (f_paperName&&f_choiceNum&&f_multipleChoiceNum&&f_optionNum&&f_time) {
 					
 					var paratmeter = {
 							'subjectId':$('#subjectName option:selected').attr("id"),
 							'subjectName':$("#subjectName").val(),
+							'paperName':$("#paperName").val(),
 							'choiceNum':$("#choiceNum").val(),
 							'multipleChoiceNum':$("#multipleChoiceNum").val(),
 							'optionNum':$("#optionNum").val(),
@@ -224,19 +228,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   	</tr>	
 	   	<tr>
 	   		<td >单择题数目</td>
-	   			<td><input type="text" id="choiceNum" name="choiceNum" class="myinput" onblur="checkChoiceNum()"></input></td>
+	   			<td><input type="text" id="choiceNum" name="choiceNum" class="myinput" onblur="checkChoiceNum()" value="0" ></input></td>
 	   	</tr>
 	   	<tr>
 	   		<td >多选题数目</td>
-	   		<td><input type="text" id="multipleChoiceNum" name="multipleChoiceNum" class="myinput" onblur="checkMultipleChoiceNum()"></input></td>
+	   		<td><input type="text" id="multipleChoiceNum" name="multipleChoiceNum" class="myinput" onblur="checkMultipleChoiceNum()" value="0"></input></td>
 	   	</tr>
 	   	<tr>
 	   		<td >判断题数目</td>
-	   		<td><input type="text" id="optionNum" name="optionNum" class="myinput" onblur="checkOptionNum()"></input></td>
+	   		<td><input type="text" id="optionNum" name="optionNum" class="myinput" onblur="checkOptionNum()" value="0"></input></td>
 	   	</tr>
 	   	<tr>
 	   		<td >总分数</td>
-	   		<td><input type="text" id="totalPoint" name="totalPoint" class="myinput" onblur="checkTotalPoint()"></input></td>
+	   		<td><input type="text" id="totalPoint" readonly="readonly" name="totalPoint" class="myinput" value="0"></input></td>
 	   	</tr>
 	   	<tr>
 	   		<td >答题时间</td>

@@ -123,11 +123,12 @@
 		
 		subjectId = (String)jsonObject.get("subjectId");
 		subjectName = (String)jsonObject.get("subjectName");
+		paperName = (String)jsonObject.get("paperName");
 		choiceNum = (String)jsonObject.get("choiceNum");
 		multipleChoiceNum = (String)jsonObject.get("multipleChoiceNum");
 		optionNum = (String)jsonObject.get("optionNum");
 		totalPoint = Integer.valueOf((String)jsonObject.get("totalPoint")).intValue();
-		time = Integer.valueOf((String)jsonObject.get("totalPoint")).intValue();
+		time = Integer.valueOf((String)jsonObject.get("time")).intValue();
 		
 		String sql = "select * from examtest where type=? and subjectId=? order by rand() limit ?";
 		choiceId = "";
@@ -223,11 +224,12 @@
 			id = ((Integer)jsonObject.get("id")).intValue();
 			subjectId = (String)jsonObject.get("subjectId");
 			subjectName = (String)jsonObject.get("subjectName");
+			paperName = (String)jsonObject.get("paperName");
 			choiceNum = (String)jsonObject.get("choiceNum");
 			multipleChoiceNum = (String)jsonObject.get("multipleChoiceNum");
 			optionNum = (String)jsonObject.get("optionNum");
 			totalPoint = Integer.valueOf((String)jsonObject.get("totalPoint")).intValue();
-			time = Integer.valueOf((String)jsonObject.get("totalPoint")).intValue();
+			time = Integer.valueOf((String)jsonObject.get("time")).intValue();
 			
 			String sql = "select * from examtest where type=? and subjectId=? order by rand() limit ?";
 			choiceId = "";
@@ -262,7 +264,7 @@
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, "2");//判断题
 				ps.setString(2, subjectId);
-				ps.setString(2, optionNum);
+				ps.setString(3, optionNum);
 				rs = ps.executeQuery();
 				while(rs.next()){
 					optionId+=rs.getInt("id")+",";
