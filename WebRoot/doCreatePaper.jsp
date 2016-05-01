@@ -163,7 +163,7 @@
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "2");//判断题
 			ps.setString(2, subjectId);
-			ps.setString(2, optionNum);
+			ps.setString(3, optionNum);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				optionId+=rs.getInt("id")+",";

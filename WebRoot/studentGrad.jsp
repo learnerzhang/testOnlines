@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ include file="comm/conndb.jsp" %>
 <%
+request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -36,33 +37,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
   	<table class="table table-hover">
   		<tr>
-  			<td style="background-color: rgb(85, 170, 255);">用户id</td>
+  			<!-- <td style="background-color: rgb(85, 170, 255);">用户id</td> -->
   			<td style="background-color: rgb(85, 170, 255);width=100;">用户名</td>
   			<td style="background-color: rgb(85, 170, 255);width=100;">班级</td>
+  			<td style="background-color: rgb(85, 170, 255);width=100;">试题名</td>
   			<td style="background-color: rgb(85, 170, 255);width=120;">分数</td>
   		</tr>
   		<%
   			String cls = request.getParameter("cls");
   			String userName;
   			String classes;
-  			int score =1;
-  			if(null != cls){
-  				sql = "select * from loginuser where classes like '%"+cls+"%'";
-  			}else{
-  				sql="select * from loginuser";
-  			}
+  			String paperName;
+  			String score;
   			
+  			if(null != cls){
+  				//SELECT scores.id,userid,score,classid FROM scores,loginuser WHERE scores.userid = loginuser.id
+  				sql = "SELECT scores.id,userid,userName,paperName,score,classes,classid FROM scores,loginuser WHERE scores.userid = loginuser.id and classes like '%"+cls+"%'";
+  			}else{
+  				sql="SELECT scores.id,userid,userName,paperName,score,classes,classid FROM scores,loginuser WHERE scores.userid = loginuser.id";
+  			}
   			rs=stmt.executeQuery(sql);
   			while(rs.next()){
-  				score = new Random().nextInt(100);
-  				id=rs.getInt("id");
+	  			//id=rs.getInt("id");
+  				score=rs.getString("score");
+  				paperName=rs.getString("paperName");
   				userName=rs.getString("userName");
   				classes=rs.getString("classes");
   		%>
   			<tr>
-  				<td><%=id %></td>
+  				<%-- <td><%=id %></td> --%>
   				<td><%=userName %></td>
   				<td><%=classes %></td>
+  				<td><%=paperName %></td>
   				<td><%=score %></td>
   			</tr>
   		<%	
